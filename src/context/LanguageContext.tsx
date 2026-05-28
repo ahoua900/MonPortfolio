@@ -1,0 +1,242 @@
+import { createContext, useContext, useState } from 'react';
+import type { ReactNode } from 'react';
+
+type Lang = 'fr' | 'en';
+
+interface LangContextType {
+  lang: Lang;
+  toggle: () => void;
+  t: (key: string) => string;
+}
+
+const translations = {
+  fr: {
+    // Navbar
+    'nav.home': 'Accueil',
+    'nav.about': 'À propos',
+    'nav.tech': 'Technologies',
+    'nav.skills': 'Compétences',
+    'nav.projects': 'Projets',
+    'nav.contact': 'Contact',
+    'nav.cta': 'Me contacter',
+    // Hero
+    'hero.badge': 'Disponible pour de nouveaux projets',
+    'hero.greeting': 'Bonjour, je suis Elvis',
+    'hero.title': 'Lead Tech & Full Stack Developer',
+    'hero.title.short': 'Lead Tech & Architecte Logiciel',
+    'hero.subtitle': 'Expert .NET / C#, React et Architecture Hexagonale. 5 ans d\'expérience à concevoir des systèmes robustes et scalables depuis Abidjan.',
+    'hero.cta.cv': 'Télécharger CV',
+    'hero.cta.contact': 'Me contacter',
+    'hero.cta.projects': 'Voir mes projets',
+    // About
+    'about.label': 'about.me',
+    'about.title': 'À Propos',
+    'about.sub': 'Passionné par l\'architecture logicielle et l\'innovation.',
+    'about.journey': 'Mon Parcours',
+    'about.vision': 'Ma Vision',
+    'about.bio1': 'Développeur Full Stack & Mobile passionné avec 5 ans d\'expérience, j\'ai évolué d\'analyste développeur à Lead Tech chez CHK Groupe. Ma spécialité : concevoir des architectures robustes qui s\'adaptent et évoluent avec les besoins business.',
+    'about.bio2': 'Expert en .NET / C# et React / TypeScript, j\'ai migré des systèmes legacy, optimisé des architectures existantes et livré des projets complets de A à Z.',
+    'about.experience': 'Expériences Professionnelles',
+    'about.formation': 'Formation',
+    'about.stat.years': 'Années d\'expérience',
+    'about.stat.projects': 'Projets livrés',
+    'about.stat.tech': 'Technologies maîtrisées',
+    'about.stat.clients': 'Clients satisfaits',
+    // Tech
+    'tech.label': 'tech.stack',
+    'tech.title': 'Technologies Maîtrisées',
+    'tech.sub': 'Chaque technologie accompagnée d\'exemples de code réels.',
+    'tech.years': 'ans d\'expérience',
+    // Skills
+    'skills.label': 'skills.map',
+    'skills.title': 'Mes Compétences',
+    'skills.sub': 'De l\'architecture système au leadership technique.',
+    'skills.overview': 'Vue d\'ensemble',
+    'skills.count': 'compétences',
+    'skills.backend': 'Backend',
+    'skills.frontend': 'Frontend',
+    'skills.mobile': 'Mobile',
+    'skills.devops': 'DevOps',
+    'skills.architecture': 'Architecture',
+    'skills.leadership': 'Leadership',
+    // Projects
+    'projects.label': 'projects.featured',
+    'projects.title': 'Mes Projets',
+    'projects.sub': 'Une sélection de projets enterprise, SaaS et IA réalisés avec passion.',
+    'projects.all': 'Tous',
+    'projects.details': 'Détails',
+    'projects.less': 'Moins',
+    'projects.code': 'Code',
+    'projects.demo': 'Demo',
+    'projects.impact': 'impact',
+    'projects.shown': 'projet(s) affiché(s)',
+    // CV Gen
+    'cv.label': 'cv.generate()',
+    'cv.title': 'Générateur de CV Intelligent',
+    'cv.sub': 'Générez un CV personnalisé et optimisé ATS selon le poste cible.',
+    'cv.template': '1. Template',
+    'cv.context': '2. Contexte du poste',
+    'cv.bio': '3. Bio personnalisée (optionnel)',
+    'cv.bio.placeholder': 'Adaptez le résumé selon l\'offre...',
+    'cv.generate': 'Générer mon CV',
+    'cv.generating': 'Génération en cours...',
+    'cv.copy': 'Copier',
+    'cv.empty': 'Configurez les paramètres et générez votre CV',
+    // Contact
+    'contact.label': 'contact.init()',
+    'contact.title': 'Travaillons Ensemble',
+    'contact.sub': 'Disponible pour des missions freelance, consulting ou collaborations.',
+    'contact.form.title': 'Envoyer un message',
+    'contact.form.name': 'Nom complet *',
+    'contact.form.email': 'Email *',
+    'contact.form.subject': 'Sujet *',
+    'contact.form.message': 'Message *',
+    'contact.form.send': 'Envoyer',
+    'contact.form.sending': 'Envoi en cours...',
+    'contact.form.sent': 'Message envoyé !',
+    'contact.form.name.ph': 'Jean Dupont',
+    'contact.form.subject.ph': 'Mission freelance, Collaboration...',
+    'contact.form.message.ph': 'Décrivez votre projet...',
+    'contact.social': 'Me retrouver sur',
+    'contact.available': 'Disponible pour de nouvelles missions',
+    'contact.response': 'Délai de réponse :',
+    'contact.response.time': 'moins de 24h',
+    'contact.remote': 'Télétravail disponible partout dans le monde',
+    'contact.timezone': 'Flexible sur les fuseaux horaires',
+    'contact.calendly': 'Planifier un appel',
+    // Daily project
+    'daily.label': 'projet.du.jour',
+    'daily.project_no': 'PROJET N°',
+    'daily.role': 'RÔLE',
+    'daily.impact': 'IMPACT',
+    'daily.code': 'Code source',
+    'daily.demo': 'Voir la démo',
+    'daily.private': 'Projet confidentiel',
+    'daily.changes': '↻  change chaque jour à minuit',
+    // Footer
+    'footer.rights': 'Tous droits réservés',
+    'footer.back': 'Retour en haut',
+  },
+  en: {
+    // Navbar
+    'nav.home': 'Home',
+    'nav.about': 'About',
+    'nav.tech': 'Technologies',
+    'nav.skills': 'Skills',
+    'nav.projects': 'Projects',
+    'nav.contact': 'Contact',
+    'nav.cta': 'Contact me',
+    // Hero
+    'hero.badge': 'Available for new projects',
+    'hero.greeting': 'Hello, I\'m Elvis',
+    'hero.title': 'Lead Tech & Full Stack Developer',
+    'hero.title.short': 'Lead Tech & Software Architect',
+    'hero.subtitle': 'Expert in .NET / C#, React and Hexagonal Architecture. 5 years building robust and scalable systems from Abidjan.',
+    'hero.cta.cv': 'Download CV',
+    'hero.cta.contact': 'Contact me',
+    'hero.cta.projects': 'See my projects',
+    // About
+    'about.label': 'about.me',
+    'about.title': 'About',
+    'about.sub': 'Passionate about software architecture and innovation.',
+    'about.journey': 'My Journey',
+    'about.vision': 'My Vision',
+    'about.bio1': 'Full Stack & Mobile Developer with 5 years of experience, I evolved from analyst developer to Lead Tech at CHK Groupe. My specialty: designing robust architectures that adapt and scale with business needs.',
+    'about.bio2': 'Expert in .NET / C# and React / TypeScript, I have migrated legacy systems, optimized existing architectures and delivered complete projects end-to-end.',
+    'about.experience': 'Professional Experience',
+    'about.formation': 'Education',
+    'about.stat.years': 'Years of experience',
+    'about.stat.projects': 'Projects delivered',
+    'about.stat.tech': 'Technologies mastered',
+    'about.stat.clients': 'Happy clients',
+    // Tech
+    'tech.label': 'tech.stack',
+    'tech.title': 'Technologies Mastered',
+    'tech.sub': 'Each technology with real code examples from my projects.',
+    'tech.years': 'years of experience',
+    // Skills
+    'skills.label': 'skills.map',
+    'skills.title': 'My Skills',
+    'skills.sub': 'From system architecture to technical leadership.',
+    'skills.overview': 'Overview',
+    'skills.count': 'skills',
+    'skills.backend': 'Backend',
+    'skills.frontend': 'Frontend',
+    'skills.mobile': 'Mobile',
+    'skills.devops': 'DevOps',
+    'skills.architecture': 'Architecture',
+    'skills.leadership': 'Leadership',
+    // Projects
+    'projects.label': 'projects.featured',
+    'projects.title': 'My Projects',
+    'projects.sub': 'A selection of enterprise, SaaS and AI projects built with passion.',
+    'projects.all': 'All',
+    'projects.details': 'Details',
+    'projects.less': 'Less',
+    'projects.code': 'Code',
+    'projects.demo': 'Demo',
+    'projects.impact': 'impact',
+    'projects.shown': 'project(s) shown',
+    // CV Gen
+    'cv.label': 'cv.generate()',
+    'cv.title': 'Intelligent CV Generator',
+    'cv.sub': 'Generate a personalized, ATS-optimized CV for any target position.',
+    'cv.template': '1. Template',
+    'cv.context': '2. Job context',
+    'cv.bio': '3. Custom bio (optional)',
+    'cv.bio.placeholder': 'Tailor the summary to the job offer...',
+    'cv.generate': 'Generate my CV',
+    'cv.generating': 'Generating...',
+    'cv.copy': 'Copy',
+    'cv.empty': 'Configure parameters and generate your CV',
+    // Contact
+    'contact.label': 'contact.init()',
+    'contact.title': 'Let\'s Work Together',
+    'contact.sub': 'Available for freelance missions, consulting or collaborations.',
+    'contact.form.title': 'Send a message',
+    'contact.form.name': 'Full name *',
+    'contact.form.email': 'Email *',
+    'contact.form.subject': 'Subject *',
+    'contact.form.message': 'Message *',
+    'contact.form.send': 'Send',
+    'contact.form.sending': 'Sending...',
+    'contact.form.sent': 'Message sent!',
+    'contact.form.name.ph': 'John Doe',
+    'contact.form.subject.ph': 'Freelance mission, Collaboration...',
+    'contact.form.message.ph': 'Describe your project...',
+    'contact.social': 'Find me on',
+    'contact.available': 'Available for new missions',
+    'contact.response': 'Response time:',
+    'contact.response.time': 'less than 24h',
+    'contact.remote': 'Remote available worldwide',
+    'contact.timezone': 'Flexible on time zones',
+    'contact.calendly': 'Schedule a call',
+    // Daily project
+    'daily.label': 'daily.project',
+    'daily.project_no': 'PROJECT N°',
+    'daily.role': 'ROLE',
+    'daily.impact': 'IMPACT',
+    'daily.code': 'Source code',
+    'daily.demo': 'View demo',
+    'daily.private': 'Confidential project',
+    'daily.changes': '↻  changes every day at midnight',
+    // Footer
+    'footer.rights': 'All rights reserved',
+    'footer.back': 'Back to top',
+  },
+};
+
+const LangContext = createContext<LangContextType>({
+  lang: 'fr',
+  toggle: () => {},
+  t: (k) => k,
+});
+
+export const LanguageProvider = ({ children }: { children: ReactNode }) => {
+  const [lang, setLang] = useState<Lang>('fr');
+  const toggle = () => setLang(l => l === 'fr' ? 'en' : 'fr');
+  const t = (key: string) => (translations[lang] as Record<string, string>)[key] ?? key;
+  return <LangContext.Provider value={{ lang, toggle, t }}>{children}</LangContext.Provider>;
+};
+
+export const useLang = () => useContext(LangContext);
