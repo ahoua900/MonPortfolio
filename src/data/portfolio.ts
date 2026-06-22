@@ -11,7 +11,7 @@ export const personalInfo = {
   linkedin: 'https://linkedin.com/in/elvis-ahoua',
   whatsapp: 'https://wa.me/2250768466745',
   calendly: 'https://calendly.com/elvisahoua64/30min',
-  bio: `Développeur Full Stack & Mobile passionné avec 5 ans d'expérience dans la conception et le développement d'applications web et mobiles. Expert en architectures robustes (Clean Architecture, DDD, Hexagonale), j'ai évolué en tant que Lead Tech chez CHK Groupe, où je dirige des équipes et conçois des systèmes haute performance. Ma mission : transformer les défis techniques complexes en solutions élégantes qui créent de la valeur réelle.`,
+  bio: `Développeur Full Stack & Mobile passionné avec 5 ans d'expérience dans la conception et le développement d'applications web et mobiles. Experimenté en architectures robustes (Clean Architecture, Hexagonale), j'ai évolué en tant que Lead Tech chez CHK Groupe, où je dirige des équipes et conçois des systèmes haute performance. Ma mission : transformer les défis techniques complexes en solutions élégantes qui créent de la valeur réelle.`,
   vision: `Je crois en un développement logiciel qui allie excellence technique, impact business et expérience utilisateur irréprochable. Chaque ligne de code doit avoir un but, chaque architecture doit évoluer avec grâce.`,
   cvUrl: '/cv-ahoua-elvis.pdf',
 };
@@ -90,7 +90,7 @@ export const technologies = [
     level: 85,
     color: '#6C63FF',
     category: 'Backend',
-    description: 'ASP.NET Core, Clean Architecture, DDD, Microservices',
+    description: 'ASP.NET Core, Clean Architecture, Microservices',
     codeExample: `// API RESTful avec Clean Architecture
 [ApiController]
 [Route("api/[controller]")]
@@ -491,7 +491,6 @@ export const skills = {
   backend: [
     { name: 'ASP.NET Core', level: 85 },
     { name: 'Clean Architecture', level: 82 },
-    { name: 'DDD / CQRS', level: 88 },
     { name: 'Entity Framework', level: 85 },
     { name: 'Dapper', level: 60 },
     { name: 'SignalR', level: 60 },
@@ -503,8 +502,6 @@ export const skills = {
     { name: 'TypeScript', level: 60 },
     { name: 'Next.js 14', level: 60 },
     { name: 'Tailwind CSS', level: 60 },
-    { name: 'Framer Motion', level: 60 },
-    { name: 'Tanstack Query', level: 85 },
   ],
   mobile: [
     { name: '.NET MAUI', level: 82 },
@@ -520,7 +517,6 @@ export const skills = {
   architecture: [
     { name: 'Clean Architecture', level: 92 },
     { name: 'Architecture Hexagonale', level: 90 },
-    { name: 'DDD', level: 85 },
     { name: 'SOLID Principles', level: 95 },
     { name: 'Design Patterns', level: 88 }
   ],
@@ -697,7 +693,7 @@ export const chatbotKnowledge = {
   expertise: [
     'Développement .NET / C# (ASP.NET Core, Clean Architecture)',
     'React / TypeScript / Next.js',
-    'Architecture hexagonale et DDD',
+    'Architecture hexagonale',
     'Leadership technique et mentoring',
     'IA et automatisation (Claude AI, Mistral AI)',
     '.NET MAUI / Xamarin (applications mobiles)',
