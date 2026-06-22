@@ -294,39 +294,6 @@ const s = StyleSheet.create({
     marginBottom: 7,
   },
 
-  /* ─ ATS Keywords ─ */
-  atsSection: {
-    paddingHorizontal: 28,
-    paddingTop: 10,
-    paddingBottom: 8,
-    borderTopWidth: 1,
-    borderTopColor: LINE,
-    borderTopStyle: 'solid',
-  },
-  atsHeader: {
-    fontSize: 7.5,
-    fontFamily: 'Helvetica-Bold',
-    color: ACCENT,
-    letterSpacing: 1.0,
-    marginBottom: 4,
-  },
-  atsGroup: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    marginBottom: 2.5,
-  },
-  atsLabel: {
-    fontSize: 6.8,
-    fontFamily: 'Helvetica-Bold',
-    color: DARK2,
-    marginRight: 4,
-  },
-  atsKeywords: {
-    fontSize: 6.8,
-    color: GRAY,
-    flex: 1,
-    lineHeight: 1.45,
-  },
 });
 
 /* ═══ Main document ═══ */
@@ -463,51 +430,6 @@ export const CVDocument = () => {
                 ))}
               </View>
             ))}
-          </View>
-        </View>
-
-        {/* ══ ATS KEYWORDS ══ */}
-        <View style={s.atsSection}>
-          <Text style={s.atsHeader}>MOTS-CLÉS TECHNIQUES — ATS</Text>
-
-          <View style={s.atsGroup}>
-            <Text style={s.atsLabel}>Langages :</Text>
-            <Text style={s.atsKeywords}>C#, .NET 8, .NET 6, VB.NET, TypeScript, JavaScript, SQL, HTML5, CSS3</Text>
-          </View>
-
-          <View style={s.atsGroup}>
-            <Text style={s.atsLabel}>Frameworks Backend :</Text>
-            <Text style={s.atsKeywords}>ASP.NET Core, ASP.NET Web API, Entity Framework Core, Dapper, SignalR, MediatR, AutoMapper, FluentValidation, xUnit, NUnit</Text>
-          </View>
-
-          <View style={s.atsGroup}>
-            <Text style={s.atsLabel}>Frameworks Frontend / Mobile :</Text>
-            <Text style={s.atsKeywords}>React 18, Next.js 14, React Native, Expo, .NET MAUI, Xamarin.Forms, TailwindCSS, Framer Motion, Zustand, TanStack Query, Redux</Text>
-          </View>
-
-          <View style={s.atsGroup}>
-            <Text style={s.atsLabel}>Architecture & Patterns :</Text>
-            <Text style={s.atsKeywords}>Clean Architecture, Architecture Hexagonale, Domain-Driven Design (DDD), CQRS, Mediator Pattern, Repository Pattern, SOLID Principles, Design Patterns (GoF), Microservices, API Gateway, Event Sourcing</Text>
-          </View>
-
-          <View style={s.atsGroup}>
-            <Text style={s.atsLabel}>Bases de données :</Text>
-            <Text style={s.atsKeywords}>PostgreSQL, Microsoft SQL Server (MSSQL), MySQL, Redis, MongoDB, Supabase, Azure SQL, Stored Procedures, Query Optimization, Index Tuning</Text>
-          </View>
-
-          <View style={s.atsGroup}>
-            <Text style={s.atsLabel}>DevOps & Cloud :</Text>
-            <Text style={s.atsKeywords}>Docker, GitHub Actions, Azure DevOps, CI/CD Pipelines, Azure App Service, Git, GitFlow, Branching Strategies, Code Review, SonarQube</Text>
-          </View>
-
-          <View style={s.atsGroup}>
-            <Text style={s.atsLabel}>IA & APIs :</Text>
-            <Text style={s.atsKeywords}>Mistral AI, Claude AI (Anthropic), OpenAI, LLM Integration, REST API, GraphQL, JWT, OAuth2, Swagger / OpenAPI, WhatsApp API, Webhooks</Text>
-          </View>
-
-          <View style={s.atsGroup}>
-            <Text style={s.atsLabel}>Méthodologies :</Text>
-            <Text style={s.atsKeywords}>Agile, Scrum, Kanban, TDD (Test-Driven Development), Code Review, Pair Programming, Documentation technique, Leadership technique, Mentoring</Text>
           </View>
         </View>
 
