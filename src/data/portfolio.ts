@@ -40,7 +40,7 @@ export const experiences = [
     ],
   },
   {
-    period: 'Depuis Juin 2024',
+    period: 'Depuis Juin 2025',
     title: 'Consultant .NET C#',
     company: 'INTUIT CORPORATE',
     type: 'Consulting',
@@ -54,7 +54,7 @@ export const experiences = [
   {
     period: 'Octobre 2023 – Juin 2025',
     title: 'Analyste Développeur',
-    company: 'Entreprise anonyme',
+    company: 'GROUPE CHK',
     type: 'CDI',
     color: '#00FF88',
     tasks: [
